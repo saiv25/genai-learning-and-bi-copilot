@@ -42,4 +42,4 @@ LangChain, LangGraph, Groq
 - Prompt chains, memory, agents, and structured outputs
 
 ## Live Demo
-Add your deployed application URL here.
+https://genai-learning-and-bi-copilot-sql-agent.streamlit.app/
