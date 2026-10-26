@@ -2,7 +2,7 @@
 # ============================================================
 # 1. IMPORTS AND CONFIGURATION
 # ============================================================
-
+import os
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -516,9 +516,22 @@ def show_sales_dashboard(data: pd.DataFrame):
 # 6. GROQ MODEL AND SQL AGENT
 # ============================================================
 
+try:
+    groq_api_key = st.secrets["GROQ_API_KEY"]
+except (KeyError, FileNotFoundError):
+    groq_api_key = os.getenv("GROQ_API_KEY")
+
+if not groq_api_key:
+    st.error(
+        "Groq API key is missing. Add GROQ_API_KEY "
+        "in Streamlit Cloud Settings > Secrets."
+    )
+    st.stop()
+
 model = ChatGroq(
     model="openai/gpt-oss-20b",
-    temperature=0
+    temperature=0,
+    api_key=groq_api_key
 )
 
 toolkit = SQLDatabaseToolkit(
