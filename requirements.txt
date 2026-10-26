@@ -1,0 +1,13 @@
+dotenv
+langchain-google-genai
+langchain-anthropic
+pandas
+openpyxl
+plotly
+streamlit
+python-dotenv
+langchain
+langchain-community
+langchain-groq
+langgraph
+sqlalchemy
